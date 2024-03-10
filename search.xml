@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>部署hexo博客</title>
+      <link href="/2024/03/10/%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2024/03/10/%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="事先准备"><a href="#事先准备" class="headerlink" title="事先准备"></a>事先准备</h1><h2 id="1-两个仓库（一个私有仓库，一个公有仓库，公有仓库起名一定要-xxx-github-io格式-公有仓库不用动，主要是用来浏览页面的）"><a href="#1-两个仓库（一个私有仓库，一个公有仓库，公有仓库起名一定要-xxx-github-io格式-公有仓库不用动，主要是用来浏览页面的）" class="headerlink" title="1.两个仓库（一个私有仓库，一个公有仓库，公有仓库起名一定要 xxx.github.io格式,公有仓库不用动，主要是用来浏览页面的）"></a>1.两个仓库（一个私有仓库，一个公有仓库，公有仓库起名一定要 xxx.github.io格式,公有仓库不用动，主要是用来浏览页面的）</h2><p><img src="https://ice.frostsky.com/2024/03/10/4b5c8f049f2ed2001d6698312c1dd603.jpeg" alt="4b5c8f049f2ed2001d6698312c1dd603.jpeg"></p><h2 id="2-私有仓库开启权限"><a href="#2-私有仓库开启权限" class="headerlink" title="2.私有仓库开启权限"></a>2.私有仓库开启权限</h2><p><img src="https://ice.frostsky.com/2024/03/10/d9eefcfc4ec8caf6c1f8a63aa382fad5.jpeg" alt="d9eefcfc4ec8caf6c1f8a63aa382fad5.jpeg"></p><h3 id="3-并且换获取-person-access-token"><a href="#3-并且换获取-person-access-token" class="headerlink" title="3.并且换获取 person access token"></a>3.并且换获取 person access token</h3><p><img src="https://ice.frostsky.com/2024/03/10/32fab784961c35164a7d27a19696bfe2.jpeg" alt="32fab784961c35164a7d27a19696bfe2.jpeg"></p><h2 id="4-在项目路径下新增-yml文件"><a href="#4-在项目路径下新增-yml文件" class="headerlink" title="4.在项目路径下新增.yml文件"></a>4.在项目路径下新增.yml文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├─ .github</span><br><span class="line">│  ├─ dependabot.yml</span><br><span class="line">│  └─ workflows</span><br><span class="line">│     └─ deploy.yml //我的.yml文件</span><br></pre></td></tr></table></figure><h2 id="5-yml文件使用的person-access-token-设置"><a href="#5-yml文件使用的person-access-token-设置" class="headerlink" title="5.yml文件使用的person access token 设置"></a>5.yml文件使用的person access token 设置</h2><p><img src="https://ice.frostsky.com/2024/03/10/b5f54225fb704ad69932fa99510555f9.jpeg" alt="b5f54225fb704ad69932fa99510555f9.jpeg"></p><h1 id="让我们开始吧"><a href="#让我们开始吧" class="headerlink" title="让我们开始吧"></a>让我们开始吧</h1><h2 id="1-写好deploy-yml文件"><a href="#1-写好deploy-yml文件" class="headerlink" title="1.写好deploy.yml文件"></a>1.写好deploy.yml文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">name: Hexo Blog</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - main</span><br><span class="line">env:</span><br><span class="line"> GH_TOKEN: $&#123;&#123; secrets.xxx &#125;&#125;                # person access token. xxx是你设置时的命名</span><br><span class="line">  TARGET_HUB: xxxx                           # xxx是的公有仓库，生成的静态文件要推上去，&quot;namigongyi/namigongyi.github.io&quot; 这种格式</span><br><span class="line">  THEME_REPO: jerryc127/hexo-theme-butterfly # 主题的仓库，你和我一样主题的话不用改</span><br><span class="line">  THEME_BRANCH: master                       # 从主题分支的仓库clone </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  deploy:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout</span><br><span class="line">        uses: actions/checkout@v4</span><br><span class="line">        #with:</span><br><span class="line">        #    submodules: recursive           # 官网是这样但是抓子模块时一直报错，就换了下面这种方法</span><br><span class="line">      - name: Checkout theme repo    </span><br><span class="line">        uses: actions/checkout@v4</span><br><span class="line">        with:</span><br><span class="line">          repository: $&#123;&#123;env.THEME_REPO&#125;&#125;</span><br><span class="line">          ref: $&#123;&#123;env.THEME_BRANCH&#125;&#125;</span><br><span class="line">          path: themes/butterfly</span><br><span class="line"></span><br><span class="line">      - name: Set up timezone</span><br><span class="line">        run: sudo timedatectl set-timezone &#x27;Asia/Shanghai&#x27;</span><br><span class="line"></span><br><span class="line">      - name: Echo current time</span><br><span class="line">        run: timedatectl</span><br><span class="line"></span><br><span class="line">      - name: Set up Node.js</span><br><span class="line">        uses: actions/setup-node@v4</span><br><span class="line">        with:</span><br><span class="line">          node-version: lts/*</span><br><span class="line">          cache: &#x27;yarn&#x27;</span><br><span class="line"></span><br><span class="line">      - name: Install Hexo CLI</span><br><span class="line">        run: npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">      - name: Install dependencies</span><br><span class="line">        uses: borales/actions-yarn@v4</span><br><span class="line">        with:</span><br><span class="line">          cmd: install</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">      - name: Build and Deploy</span><br><span class="line">        uses: theme-keep/hexo-deploy-github-pages-action@master   # 使用专门部署 Hexo 到 GitHub pages 的 action</span><br><span class="line">        env:</span><br><span class="line">          PERSONAL_TOKEN: $&#123;&#123; env.GH_TOKEN &#125;&#125;                     # secret 名</span><br><span class="line">          PUBLISH_REPOSITORY: $&#123;&#123; env.TARGET_HUB &#125;&#125;               # 公共仓库，格式：GitHub 用户名/仓库名</span><br><span class="line">          BRANCH: main                                            # 分支，填 gh-pages 就行</span><br><span class="line">          PUBLISH_DIR: ./public                                   # 部署 public 目录下的文件</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="2-把项目push到私有仓库上"><a href="#2-把项目push到私有仓库上" class="headerlink" title="2.把项目push到私有仓库上"></a>2.把项目push到私有仓库上</h2><h2 id="3-如果部署成功，则在公有仓库的-setting–-Pages–-Visit-site-查看页面"><a href="#3-如果部署成功，则在公有仓库的-setting–-Pages–-Visit-site-查看页面" class="headerlink" title="3.如果部署成功，则在公有仓库的 setting–&gt; Pages–&gt; Visit site 查看页面"></a>3.如果部署成功，则在公有仓库的 setting–&gt; Pages–&gt; Visit site 查看页面</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Others </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> github-actions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2024/03/10/hello-world/"/>
+      <url>/2024/03/10/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>deploy</title>
+      <link href="/2024/03/09/deploy/"/>
+      <url>/2024/03/09/deploy/</url>
+      
+        <content type="html"><![CDATA[<p> 这是一个deploy测试，欢迎来到github actions。<br> 第一次，<br> 第二次，<br> 第三次,<br> 第四次,<br> 第12次</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> deploy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test</title>
+      <link href="/2024/02/23/test/"/>
+      <url>/2024/02/23/test/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p><strong>这是加粗</strong></p><p><del>这是横线</del></p><ul><li>无序列表</li></ul><p><em>这是斜体</em></p><ol><li>有序列表</li><li>无序列表</li></ol><p><code>内嵌代码</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure><blockquote><p>引用</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── .gitignore</span><br><span class="line">├── _config.yml</span><br><span class="line">├── _config.butterfly.yml</span><br><span class="line">├── yarn.lock</span><br><span class="line">├── package.json</span><br><span class="line">├── .github</span><br><span class="line">│ └── workflows</span><br><span class="line">│ └── deploy.yml</span><br><span class="line">├── scaffolds</span><br><span class="line">│ ├── draft.md</span><br><span class="line">│ ├── page.md</span><br><span class="line">│ └── post.md</span><br><span class="line">├── source</span><br><span class="line">│ ├── robots.txt</span><br><span class="line">│ ├── _data</span><br><span class="line">│ ├── _posts</span><br><span class="line">│ ├── about</span><br><span class="line">│ ├── categories</span><br><span class="line">│ ├── link</span><br><span class="line">│ ├── music</span><br><span class="line">│ └── tags</span><br><span class="line">└── themes</span><br><span class="line">└── butterfly</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
